@@ -3,7 +3,7 @@ class PostRepository {
 
     constructor() {
         this.posts = []
-        this.id = 0;
+        this.id = -1;
     }
 
     create(AuthorName, description) {
@@ -22,14 +22,21 @@ class PostRepository {
                 "AuthorName": post.AuthorName,
                 "description": post.description
             }
-        }
+        } 
         else {
             return "error: post undefined"
         }
     }
 
-    update(new_description) {
-        this.description = new_description
+    updateDescription(id, new_description) {
+        const postIndex = this.posts.findIndex(post => post.id === id);
+
+        if (postIndex !== -1) {
+            this.posts[postIndex].description = new_description;
+        } 
+        else {
+            return "error: post undefined";
+        }
     }
 
     delete(id) {
