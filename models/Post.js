@@ -6,7 +6,7 @@ class PostRepository {
         this.id = 0;
     }
 
-    createPost(AuthorName, description) {
+    create(AuthorName, description) {
         this.AuthorName = AuthorName;
         this.id += 1;
         this.description = description;
@@ -14,7 +14,7 @@ class PostRepository {
         this.posts.push({ "AuthorName": this.AuthorName, "id": this.id, "description": this.description })
     }
 
-    readPost(id) {
+    read(id) {
         const post = this.posts.find(post => post.id === id)
 
         if (post) {
@@ -28,11 +28,11 @@ class PostRepository {
         }
     }
 
-    updatePost(new_description) {
+    update(new_description) {
         this.description = new_description
     }
 
-    deletePost(id) {
+    delete(id) {
         const post = this.posts.find(post => post.id === id)
 
         if (post) {
@@ -43,15 +43,3 @@ class PostRepository {
         }
     }
 }
-
-
-// const post = new PostRepository()
-
-// post.createPost("jose", "hola como estas")
-// post.createPost("luis", "holaaaa")
-
-// console.log(post.readPost(1))
-
-// post.deletePost(1)
-
-// console.log(post.readPost(1))
