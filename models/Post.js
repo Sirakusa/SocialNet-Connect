@@ -3,50 +3,52 @@ class PostRepository {
 
     constructor() {
         this.posts = []
-        this.id = -1;
+        this.id = 0;
     }
 
     create(AuthorName, description) {
-        this.AuthorName = AuthorName;
-        this.id += 1;
-        this.description = description;
+        this.posts.push({ "AuthorName": AuthorName, "id": this.id, "description": description })
 
-        this.posts.push({ "AuthorName": this.AuthorName, "id": this.id, "description": this.description })
+        this.id += 1;
     }
 
     read(id) {
         const post = this.posts.find(post => post.id === id)
 
-        if (post) {
-            return {
-                "AuthorName": post.AuthorName,
-                "description": post.description
-            }
-        } 
-        else {
+        if (!post) {
             return "error: post undefined"
         }
+
+        return post
     }
 
     updateDescription(id, new_description) {
         const postIndex = this.posts.findIndex(post => post.id === id);
 
-        if (postIndex !== -1) {
-            this.posts[postIndex].description = new_description;
-        } 
-        else {
+        if (postIndex === -1) {
+
             return "error: post undefined";
         }
+        
+        this.posts[postIndex].description = new_description;
+
+        return this.posts[postIndex]
     }
 
     delete(id) {
         const post = this.posts.find(post => post.id === id)
 
-        if (post) {
-            this.posts = this.posts.filter(elemento => elemento !== post);
-        }
-        else {
+        if (!post) {
             return "error: post undefined"
         }
+        
+        this.posts = this.posts.filter(elemento => elemento !== post);
+
+        return "sucess"
+
+    }
+
+    get id(){
+        return this.id
     }
 }
