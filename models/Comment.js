@@ -5,7 +5,7 @@ class CommentRepository {
         this.idComment = 0;
     }
 
-    addComment(comment, postId) {
+    addComment(postId,comment) {
         this.comments.push({postId,idComment: this.idComment,comment});
 
         this.idComment += 1;
