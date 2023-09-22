@@ -24,7 +24,7 @@ class PostRepository {
             }
         }
         else {
-            return "error, post undefined"
+            return "error: post undefined"
         }
     }
 
@@ -39,7 +39,7 @@ class PostRepository {
             this.posts = this.posts.filter(elemento => elemento !== post);
         }
         else {
-            return "error, post undefined"
+            return "error: post undefined"
         }
     }
 }
