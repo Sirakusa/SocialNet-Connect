@@ -91,7 +91,10 @@ app.patch('/comment/update/:id/:comment',(req,res) => {
 })
 
 app.get('/comment/read/:id/:comments',(req,res) =>{
-    
+    const id_comment = req.params.id
+    const number_comments = req.params.comments
+
+    res.json(commentRepository.read(id_comment,number_comments))
 })
 
 
