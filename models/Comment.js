@@ -6,7 +6,9 @@ class CommentRepository {
     }
 
     addComment(postId,comment) {
-        this.comments.push({postId,idComment: this.idComment,comment});
+
+        const post_id = parseInt(postId)
+        this.comments.push({post_id,idComment: this.idComment,comment});
 
         this.idComment += 1;
 
@@ -14,7 +16,9 @@ class CommentRepository {
     }
 
     deleteComment(id) {
-        const commentToDelete = this.comments.find(comment => comment.idComment === id);
+
+        const id_comment = parseInt(id)
+        const commentToDelete = this.comments.find(comment => comment.idComment === id_comment);
 
         if (!commentToDelete) {
             return "error: comment undefined";
@@ -25,7 +29,9 @@ class CommentRepository {
     }
 
     update(id, new_description) {
-        const commentIndex = this.comments.findIndex(comment => comment.idComment === id);
+
+        const id_comment = parseInt(id)
+        const commentIndex = this.comments.findIndex(comment => comment.idComment === id_comment);
 
         if (commentIndex === -1) {
             return "error: comment undefined";
@@ -36,7 +42,9 @@ class CommentRepository {
     }
 
     read(postId, numberCommets) {
-        const commentsForPost = this.comments.filter(comment => comment.postId === postId);
+
+        const post_id = parseInt(postId)
+        const commentsForPost = this.comments.filter(comment => comment.postId === post_id);
 
         if (commentsForPost.length === 0) {
             return "error: not enough comments";
