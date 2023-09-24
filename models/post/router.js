@@ -13,7 +13,7 @@ postRouter.post('/post/', (req, res) => {
 postRouter.get('/post/:id', (req, res) => {
   const id_post = req.params.id;
 
-  const status_post = postRepository.read(id_post);
+  const status_post = PostRepository.read(id_post);
 
   if (status_post === 'error: post undefined') {
     return res.send(status_post);
@@ -25,7 +25,7 @@ postRouter.get('/post/:id', (req, res) => {
 postRouter.delete('/post/:id', (req, res) => {
   const id_post = req.params.id;
 
-  postRepository.delete(id_post);
+  PostRepository.delete(id_post);
 
   res.send('delete succesful');
 });
@@ -34,7 +34,7 @@ postRouter.patch('/post/:id', (req, res) => {
   const id_post = req.params.id;
   const { description } = req.body;
 
-  postRepository.updateDescription(id_post, description);
+  PostRepository.updateDescription(id_post, description);
 
-  res.json(postRepository.read(id_post));
+  res.json(PostRepository.read(id_post));
 });

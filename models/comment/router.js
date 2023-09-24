@@ -14,7 +14,7 @@ commentRouter.post('/comment/:idpost', (req, res) => {
 commentRouter.delete('/comment/:id', (req, res) => {
   const id_comment = req.params.id;
 
-  commentRepository.deleteComment(id_comment);
+  CommentRepository.deleteComment(id_comment);
 
   res.send('deleted comment');
 });
@@ -23,7 +23,7 @@ commentRouter.patch('/comment/:id', (req, res) => {
   const id_comment = req.params.id;
   const { comment } = req.body;
 
-  commentRepository.update(id_comment, comment);
+  CommentRepository.update(id_comment, comment);
 
   res.send('update comment succesful');
 });
@@ -32,7 +32,7 @@ commentRouter.get('/comment/:id/:numbercoments', (req, res) => {
   const id_comment = req.params.id;
   const number_comments = req.params.comments;
 
-  res.json(commentRepository.read(id_comment, number_comments));
+  res.json(CommentRepository.read(id_comment, number_comments));
 });
 
 module.exports = commentRouter;
