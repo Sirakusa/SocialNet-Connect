@@ -1,12 +1,16 @@
 {
-  "name": "practica",
+  "name": "practica-1",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "practica",
+  "main": "router.js",
   "scripts": {
-    "start": "node router.js",
+    "start": "node ./router.js",
+    "dev": "nodemon ./router.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
