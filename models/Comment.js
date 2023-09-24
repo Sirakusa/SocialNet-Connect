@@ -63,3 +63,5 @@ class CommentRepository {
         return selectedComments;
     }
 }
+
+module.exports = {CommentRepository}
