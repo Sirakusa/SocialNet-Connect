@@ -57,11 +57,6 @@ app.patch('/post/patch/:id/:description', (req,res) => {
 })
 
 
-app.use((req,res)=> {
-    res.status(404).send("undefined route")
-})
-
-
 app.post('/comment/:idpost/:comment',(req,res) => {
 
     const id_post = req.params.idpost
@@ -90,13 +85,16 @@ app.patch('/comment/update/:id/:comment',(req,res) => {
     res.send('update comment succesful')
 })
 
-app.get('/comment/read/:id/:comments',(req,res) =>{
+app.get('/comment/read/:id/:numbercoments',(req,res) =>{
     const id_comment = req.params.id
     const number_comments = req.params.comments
 
     res.json(commentRepository.read(id_comment,number_comments))
 })
 
+app.use((req,res)=> {
+    res.status(404).send("undefined route")
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
