@@ -7,6 +7,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+//iniciar conexion a db
 router(app);
 
 app.listen(port, () => {

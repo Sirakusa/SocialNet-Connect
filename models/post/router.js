@@ -1,40 +1,14 @@
 const { Router } = require('express');
-const PostRepository = require('./Post');
 const postRouter = Router({ mergeParams: true });
+const PostController = require('./controller');
+const controller = new PostController();
 
-postRouter.post('/post/', (req, res) => {
-  const { author, description } = req.body;
+postRouter.post('/', controller.create);
 
-  PostRepository.create(author, description);
+postRouter.get('/:id', controller.find);
 
-  res.send('new post');
-});
+postRouter.delete('/:id', controller.remove);
 
-postRouter.get('/post/:id', (req, res) => {
-  const id_post = req.params.id;
+postRouter.patch('/:id', controller.update);
 
-  const status_post = PostRepository.read(id_post);
-
-  if (status_post === 'error: post undefined') {
-    return res.send(status_post);
-  }
-
-  res.json(status_post);
-});
-
-postRouter.delete('/post/:id', (req, res) => {
-  const id_post = req.params.id;
-
-  PostRepository.delete(id_post);
-
-  res.send('delete succesful');
-});
-
-postRouter.patch('/post/:id', (req, res) => {
-  const id_post = req.params.id;
-  const { description } = req.body;
-
-  PostRepository.updateDescription(id_post, description);
-
-  res.json(PostRepository.read(id_post));
-});
+module.exports = postRouter;
